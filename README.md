@@ -4,10 +4,13 @@ As a submission Assistive Innovation Challenge 2026, beacon is a project wholehe
 ## Features
 | Feature | Description |
 | ------- | ----------- |
-| **Conversations with a support system** | A therapist, dietitian, family, and friends can see when a patient is doing well, needs company, or to simply check on then. |
+| **Create a support system** | A therapist, dietitian, family, and friends can see when a patient is doing well, needs company, or to simply check on then. |
 
 ## Tech Stack
-
+* **Frontend:** React Native, Nativewind
+* **Backend:** Supabase
+* **Database:** PostgreSQL
+* **APIs/External Tools:** Figma
 
 ## Research Backing
 
