@@ -16,10 +16,30 @@ As a submission Assistive Innovation Challenge 2026, beacon is a project wholehe
  - Figma (UI Mockup Platform)
  - Git and GitHub (Version Control)
 
-## Research Backing
-- **Support system**: Recovery outcomes improve with a coordinated care team (physician, dietitian, psychologist) and consistent family/social support — one of the most cited factors in successful long-term recovery.
-- **Calendar**: Clinical management relies on structured tracking of weight, therapy sessions, and follow-up frequency (weekly → monthly → quarterly as progress stabilizes). However, literature also cautions that weight-only progress tracking can be demoralizing and may reinforce the weight-overvaluation that helps maintain anorexia — so progress tracking should account for behavioral and psychological markers too, not just weight.
-- **Support groups**: Peer support and exposure to relatable recovery stories help sustain motivation, especially post-discharge, when support networks often aren't well-equipped to help — a known gap in current care.
+## Research backing
+
+<img width="1594" height="600" alt="image" src="https://github.com/user-attachments/assets/15e5501a-c199-494e-9290-1cc40df2686a" />
+
+**Feature 1: Create a Support System**
+*Therapists, dietitians, family, and friends can see a patient's well-being and reach out anytime*
+
+- Theme 3 directly supports this: one account credits family support as the single most important factor in recovery, alongside positive recovery-oriented content that helped shift mindset.
+- The Mayo Clinic/PMC material notes that effective care requires a coordinated multidisciplinary team — dietician, psychologist, child psychiatrist, and primary care physician — with the physician acting as care coordinator. An app that lets these roles view wellbeing data in one place reflects this need for coordination.
+- Caveat: Theme 3 also shows loved ones can hinder recovery (e.g., physique-focused feedback that becomes toxic). This is a legitimate design consideration — the app should support monitoring/reaching out without enabling weight- or appearance-focused commentary from supporters, since that risks reinforcing the weight overvaluation flagged in Theme 2.
+
+**Feature 2: Calendar**
+*Scheduled therapy sessions, meals, and progress*
+
+- Matches the clinical management principles directly: weight restoration (tracked via weight diary), psychological intervention, and long-term follow-up are the core pillars of treatment — a calendar operationalizes this.
+- The follow-up schedule research (weekly → fortnightly → monthly → quarterly as the patient stabilizes) gives a concrete, evidence-based model for how the calendar's session frequency could adapt over time.
+- Nuance: weight/progress tracking is clinically important but can be demoralizing, and an overemphasis on weight numbers may reinforce the exact overvaluation that maintains anorexia. If the calendar surfaces "progress," it's worth tracking behavioral/psychological markers alongside or instead of weight-only metrics.
+
+**Feature 3: Support Groups**
+*Safe space for people with the same condition to discuss*
+
+- Theme 3's "need for intrinsic motivators" point is the strongest anchor here — the Springer study notes a gap in preparing wider support networks and sustaining motivation post-discharge; peer support groups can help fill that gap by giving ongoing, relatable reinforcement.
+- The personal account that credits following positive recovery accounts as part of what helped shift her mindset is direct evidence that peer-modeled recovery narratives are motivating.
+- Ties back to Theme 1 ("recovery as an ongoing process," "the need for aftercare") — support groups address the post-discharge gap where one account felt invalidated for not being "sick enough," since peer spaces can validate a wider range of experiences than clinical criteria do.
 
 ## Sources
 
