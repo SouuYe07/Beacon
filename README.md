@@ -19,8 +19,8 @@ As a submission Assistive Innovation Challenge 2026, beacon is a project wholehe
 ## Research backing
 
 <img width="1594" height="600" alt="image" src="https://github.com/user-attachments/assets/15e5501a-c199-494e-9290-1cc40df2686a" />
-Figure adapted from [Journal of Eating Disorders (2025)](https://link.springer.com/article/10.1186/s40337-025-01432-6/figures/1)
 
+Figure adapted from [Journal of Eating Disorders (2025)](https://link.springer.com/article/10.1186/s40337-025-01432-6/figures/1)
 
 **Feature 1: Create a Support System**
 *Therapists, dietitians, family, and friends can see a patient's well-being and reach out anytime*
