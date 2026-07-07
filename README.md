@@ -22,6 +22,8 @@ As a submission Assistive Innovation Challenge 2026, beacon is a project wholehe
 
 Figure adapted from [Journal of Eating Disorders (2025)](https://link.springer.com/article/10.1186/s40337-025-01432-6/figures/1)
 
+
+
 **Feature 1: Create a Support System**
 
 *Therapists, dietitians, family, and friends can see a patient's well-being and reach out anytime*
@@ -30,6 +32,8 @@ Figure adapted from [Journal of Eating Disorders (2025)](https://link.springer.c
 - The Mayo Clinic/PMC material notes that effective care requires a coordinated multidisciplinary team — dietician, psychologist, child psychiatrist, and primary care physician — with the physician acting as care coordinator. An app that lets these roles view wellbeing data in one place reflects this need for coordination.
 - Caveat: Theme 3 also shows loved ones can hinder recovery (e.g., physique-focused feedback that becomes toxic). This is a legitimate design consideration — the app should support monitoring/reaching out without enabling weight- or appearance-focused commentary from supporters, since that risks reinforcing the weight overvaluation flagged in Theme 2.
 
+
+
 **Feature 2: Calendar**
 
 *Scheduled therapy sessions, meals, and progress*
@@ -37,6 +41,8 @@ Figure adapted from [Journal of Eating Disorders (2025)](https://link.springer.c
 - Matches the clinical management principles directly: weight restoration (tracked via weight diary), psychological intervention, and long-term follow-up are the core pillars of treatment — a calendar operationalizes this.
 - The follow-up schedule research (weekly → fortnightly → monthly → quarterly as the patient stabilizes) gives a concrete, evidence-based model for how the calendar's session frequency could adapt over time.
 - Nuance: weight/progress tracking is clinically important but can be demoralizing, and an overemphasis on weight numbers may reinforce the exact overvaluation that maintains anorexia. If the calendar surfaces "progress," it's worth tracking behavioral/psychological markers alongside or instead of weight-only metrics.
+
+
 
 **Feature 3: Support Groups**
 
