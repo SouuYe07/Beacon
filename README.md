@@ -17,10 +17,9 @@ As a submission Assistive Innovation Challenge 2026, beacon is a project wholehe
  - Git and GitHub (Version Control)
 
 ## Research Backing
-
-- **Support system**: one of the most frequently mentioned factors in successful long-term recovery – support system: Recovery is better when there is a coordinated care team (physician, dietitian, psychologist) and consistent family/social support.
-- **Calendar**: weight, therapy sessions, follow-up (weekly to monthly to quarterly as these become more stable). There is literature to warn that, however, weight progress monitoring can have negative consequences, including a sense of demoralization and the continuing reinforcement of weight overvaluation that is a hallmark of maintaining anorexia, which is why there is a need for progress monitoring that includes behavioral and psychological indicators alongside weight.
-- **Support groups**: Peer support groups and hearing of similar recovery experiences helps to maintain motivation, particularly after discharge, when support groups are not as well supported as they could be — identified as a gap in current care.
+- **Support system**: Recovery outcomes improve with a coordinated care team (physician, dietitian, psychologist) and consistent family/social support — one of the most cited factors in successful long-term recovery.
+- **Calendar**: Clinical management relies on structured tracking of weight, therapy sessions, and follow-up frequency (weekly → monthly → quarterly as progress stabilizes). However, literature also cautions that weight-only progress tracking can be demoralizing and may reinforce the weight-overvaluation that helps maintain anorexia — so progress tracking should account for behavioral and psychological markers too, not just weight.
+- **Support groups**: Peer support and exposure to relatable recovery stories help sustain motivation, especially post-discharge, when support networks often aren't well-equipped to help — a known gap in current care.
 
 ## Sources
 
