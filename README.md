@@ -4,7 +4,7 @@ As a submission Assistive Innovation Challenge 2026, beacon is a project wholehe
 ## Features
 | Feature | Description |
 | ------- | ----------- |
-| **Create a support system** | Therapists, dietitians, family, and friends can see a patient's wellbeing, and can jump in anytime to reach out |
+| **Create a support system** | Allows the patient, health professionals, friends, and family, to create a digital place for a patient's recovery | 
 | **Calendar** | Contains information about scheduled therapy sessions, meals, and progress |
 | **Support Groups** | Acts as a platform where people who face the same condition can have a safe space together to discuss |
 

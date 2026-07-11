@@ -35,6 +35,14 @@
 - Group
 - Post Food
 - Settings
+- Messages
+
+## Notifications
+- Upcoming session
+- Messages received
+
+## Messages
+- Reacreate messenger
 
 ## Calendar
 - Scheduled Sessions
@@ -52,16 +60,19 @@
 
 # Home Page (Dietician/Psychiatrist)
 
-
 ## Bottom Navigation Bar
 - Patients
 - Calendar
 - Schedule Sessions 
+- Messages
 
 ## Notifications
-- Patient meal (Dietician)
+- Messages received
+- Patient meal uploaded (Dietician)
 - Upcoming scheduled sessions
-- 
+
+## Messages
+- Reacreate messenger
 
 ## Patients
 - List of Patients
@@ -80,11 +91,33 @@
 - Filter by patient
 
 ## Food Calendar
+- Toggle Session Calendar
 - Filter by patient
 - Date selector
 - Meals added
+- Add weight
 
 ## Meals
 - Patient
 - Picture itself
 - Date and time 
+
+
+# Home Page (Friends/Family)
+
+## Bottom Navigation Bar
+- Messages
+- Calendar
+
+## Messages
+- Reacreate messenger
+
+## Session Calendar
+- Toggle Food Calendar
+- Talk sessions of patients
+
+## Food Calendar
+- Toggle Session Calendar
+- Date selector
+- Meals added
+- Add weight
