@@ -37,7 +37,7 @@
 - Settings
 
 ## Calendar
-- Scheduled talk sessions
+- Scheduled Sessions
 
 ## Group
 - List of people in your Group
@@ -47,3 +47,37 @@
 ## Post Food
 - Only accessible by Patient and Dietician
 - Opens camera to send meal
+
+
+# Home Page (Dietician/Psychiatrist)
+
+## Bottom Navigation Bar
+- Patients
+- Calendar
+- Schedule Sessions 
+
+## Patients
+- List of Patients
+- Information and status
+- Schedule of Talk
+
+
+## Schedule Session 
+- Patient
+- Date
+- Select if weekly
+
+## Session Calendar
+- Toggle Food Calendar
+- Talk sessions of all patients 
+- Filter by patient
+
+## Food Calendar
+- Filter by patient
+- Date selector
+- Meals added
+
+## Meals
+- Patient
+- Picture itself
+- Date and time 
