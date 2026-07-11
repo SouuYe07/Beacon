@@ -42,7 +42,8 @@
 ## Group
 - List of people in your Group
 - Contact Information
-- Roles
+- Roles/Relationship
+- Propose removal of a person (family/friend only)
 
 ## Post Food
 - Only accessible by Patient and Dietician
@@ -51,16 +52,22 @@
 
 # Home Page (Dietician/Psychiatrist)
 
+
 ## Bottom Navigation Bar
 - Patients
 - Calendar
 - Schedule Sessions 
 
+## Notifications
+- Patient meal (Dietician)
+- Upcoming scheduled sessions
+- 
+
 ## Patients
 - List of Patients
 - Information and status
 - Schedule of Talk
-
+- Proposals for removal at group
 
 ## Schedule Session 
 - Patient
