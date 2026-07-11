@@ -14,6 +14,7 @@
 - User Type (Patient, Dietician, Psychiatrist, Friend, Family)
 - Password/Confirm password
 - Submit
+- Contact Information
 
 
 # Setting Up
@@ -31,9 +32,18 @@
 
 ## Bottom Navigation Bar
 - Calendar
-- Support System
+- Group
 - Post Food
 - Settings
 
 ## Calendar
 - Scheduled talk sessions
+
+## Group
+- List of people in your Group
+- Contact Information
+- Roles
+
+## Post Food
+- Only accessible by Patient and Dietician
+- Opens camera to send meal
