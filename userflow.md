@@ -34,8 +34,8 @@
 - Calendar
 - Group
 - Post Food
-- Settings
 - Messages
+- Profile 
 
 ## Notifications
 - Upcoming session
@@ -57,6 +57,11 @@
 - Only accessible by Patient and Dietician
 - Opens camera to send meal
 
+## Profile
+- Setting
+- Name
+- Email
+- Role
 
 # Home Page (Dietician/Psychiatrist)
 
@@ -65,6 +70,7 @@
 - Calendar
 - Schedule Sessions 
 - Messages
+- Profile 
 
 ## Notifications
 - Messages received
@@ -102,12 +108,18 @@
 - Picture itself
 - Date and time 
 
+## Profile
+- Setting
+- Name
+- Email
+- Role
 
 # Home Page (Friends/Family)
 
 ## Bottom Navigation Bar
 - Messages
 - Calendar
+- Profile 
 
 ## Messages
 - Reacreate messenger
@@ -121,3 +133,9 @@
 - Date selector
 - Meals added
 - Add weight
+
+## Profile
+- Setting
+- Name
+- Email
+- Role
