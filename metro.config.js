@@ -1,18 +1,21 @@
 const { getDefaultConfig } = require("expo/metro-config");
-const { withNativeWind } = require('nativewind/metro');
+const { withNativeWind } = require("nativewind/metro");
 
-// 1. Fetch the default Expo Metro configuration
 const config = getDefaultConfig(__dirname);
 
-// 2. Extract resolver properties from the default config
-const { resolver: { sourceExts, assetExts } } = config;
+const { assetExts, sourceExts } = config.resolver;
 
-// 3. Configure the SVG transformer layers
-config.transformer.babelTransformerPath = require.resolve("react-native-svg-transformer");
+config.transformer = {
+  ...config.transformer,
+  babelTransformerPath: require.resolve("react-native-svg-transformer/expo"),
+};
 
-// 4. Intercept .svg files so they are treated as source code instead of asset binaries
-config.resolver.assetExts = assetExts.filter((ext) => ext !== "svg");
-config.resolver.sourceExts = [...sourceExts, "svg"];
+config.resolver = {
+  ...config.resolver,
+  assetExts: assetExts.filter((ext) => ext !== "svg"),
+  sourceExts: [...sourceExts, "svg"],
+  // Avoid broken resolution of package-internal `.js` imports on Windows
+  unstable_enablePackageExports: false,
+};
 
-// 5. Wrap the modified configuration with NativeWind
-module.exports = withNativeWind(config, { input: './global.css' });
+module.exports = withNativeWind(config, { input: "./global.css" });
