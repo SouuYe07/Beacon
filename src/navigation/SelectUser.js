@@ -6,9 +6,9 @@ export default function SelectUser() {
     <View className="flex-1 relative">
       <Background />
 
-      <View className="flex-1 z-10">
-        <Text className="text-3xl font-geom-regular">
-          wpoeipcwei
+      <View className="flex-1 z-10 justify-center items-center">
+        <Text>
+          piopkepri
         </Text>
       </View>
     </View>
