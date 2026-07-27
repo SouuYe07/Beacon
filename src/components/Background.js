@@ -8,7 +8,7 @@ export default function Background() {
     <Image
       source={BackgroundPng}
       style={{ width, height }}
-      className="absolute inset-0 w-full h-full -z-10"
+      className="absolute inset-0 -z-10"
       resizeMode="cover"
     />
   );

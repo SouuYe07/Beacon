@@ -1,9 +1,9 @@
 import "./global.css";
 import { Text, View } from 'react-native';
-import Background from "./src/components/Background";
+import SelectUser from "./src/navigation/SelectUser";
 
 export default function App() {
   return (
-    <Background />
+    <SelectUser />
   );
 }
