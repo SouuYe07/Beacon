@@ -1,10 +1,11 @@
-import React from 'react';
-import { Text } from 'react-native';
+import { View } from "react-native";
+import Background from "../../components/Background";
 
-export default function Calendar(){
-  return(
-    <Text>
-      Calendar
-    </Text>
+export default function Calendar() {
+  return (
+    <View className="flex-1 relative">
+      <Background />
+      <View className="flex-1 z-10" />
+    </View>
   );
 }

@@ -1,11 +1,11 @@
+import { View } from "react-native";
+import Background from "../../components/Background";
 
-import React from 'react';
-import { Text } from 'react-native';
-
-export default function CreateSession(){
-  return(
-    <Text>
-      CreateSession
-    </Text>
+export default function CreateSession() {
+  return (
+    <View className="flex-1 relative">
+      <Background />
+      <View className="flex-1 z-10" />
+    </View>
   );
 }
