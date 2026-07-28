@@ -2,7 +2,8 @@ import { View, Text, ScrollView, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import Background from "../components/Background";
-import { AccountCard, useSelectLayout } from "./AccountCard";
+import AccountCard from "../components/AccountCard";
+import useSelectLayout from "../hooks/useSelectLayout";
 
 import Bunny from "../../assets/Animals/Friends.svg";
 import PolarBear from "../../assets/Animals/Family.svg";
