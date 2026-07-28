@@ -18,4 +18,29 @@ config.resolver = {
   unstable_enablePackageExports: false,
 };
 
-module.exports = withNativeWind(config, { input: "./global.css" });
+const withCss = withNativeWind(config, { input: "./global.css" });
+
+// native-stack imports `./FontProcessor.js` with an explicit extension.
+// With package exports off, Metro skips `.native.js` and loads the web stub.
+const upstreamResolveRequest = withCss.resolver.resolveRequest;
+withCss.resolver.resolveRequest = (context, moduleName, platform) => {
+  if (
+    platform !== "web" &&
+    typeof moduleName === "string" &&
+    moduleName.replace(/\\/g, "/").endsWith("/FontProcessor.js")
+  ) {
+    const nativeModule = moduleName.replace(
+      /FontProcessor\.js$/,
+      "FontProcessor.native.js"
+    );
+    return context.resolveRequest(context, nativeModule, platform);
+  }
+
+  if (typeof upstreamResolveRequest === "function") {
+    return upstreamResolveRequest(context, moduleName, platform);
+  }
+
+  return context.resolveRequest(context, moduleName, platform);
+};
+
+module.exports = withCss;

@@ -1,14 +1,11 @@
 import { View, Pressable, StyleSheet, Platform } from "react-native";
 import { BlurView } from "expo-blur";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import TabIcon from "./TabIcon";
 import { TAB_BAR } from "./tabConfig";
 
 export default function GlassTabBar({ state, descriptors, navigation }) {
-  const insets = useSafeAreaInsets();
-
   return (
-    <View style={[styles.wrap, { paddingBottom: Math.max(insets.bottom, 12) }]}>
+    <View style={[styles.wrap, { paddingBottom: 12 }]}>
       <View style={styles.barShadow}>
         <BlurView
           intensity={40}

@@ -1,16 +1,24 @@
-import { Image, useWindowDimensions } from 'react-native';
+import { Image, StyleSheet, Dimensions } from "react-native";
 import BackgroundPng from "../../assets/background.png";
 
 export default function Background() {
-  const { width, height } = useWindowDimensions();
+  const { width, height } = Dimensions.get("screen");
 
   return (
     <Image
       source={BackgroundPng}
-      style={{ width, height }}
-      className="absolute inset-0 -z-10"
       resizeMode="cover"
+      pointerEvents="none"
+      style={[styles.image, { width, height }]}
     />
   );
 }
 
+const styles = StyleSheet.create({
+  image: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    zIndex: -1,
+  },
+});

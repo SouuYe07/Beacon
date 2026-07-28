@@ -1,62 +1,67 @@
-import { View, Text, Pressable } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import Background from '../components/Background';
+import { View, Text, ScrollView } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import Background from "../components/Background";
+import { AccountCard, useSelectLayout } from "./AccountCard";
 
-import Patient from '../../assets/Animals/Patient.svg';
-import Professional from '../../assets/Animals/Professional.svg';
-import Friends from '../../assets/Animals/Friends.svg';
+import Patient from "../../assets/Animals/Patient.svg";
+import Professional from "../../assets/Animals/Professional.svg";
+import Friends from "../../assets/Animals/Friends.svg";
 
 export default function SelectUser() {
   const navigation = useNavigation();
+  const { insets, styles } = useSelectLayout();
 
   return (
     <View className="flex-1 relative">
       <Background />
 
-      <View className="flex-1 z-10 justify-center mx-8">
-        <Text className="font-geom-medium text-4xl text-[#262626] w-60 mb-6">
+      <ScrollView
+        className="z-10"
+        contentContainerStyle={{
+          flexGrow: 1,
+          justifyContent: "center",
+          paddingTop: insets.top + 12,
+          paddingBottom: insets.bottom + 16,
+          paddingHorizontal: styles.sidePad,
+        }}
+        showsVerticalScrollIndicator={false}
+        bounces={false}
+      >
+        <Text
+          className="font-geom-medium text-[#262626]"
+          style={{
+            fontSize: styles.headingSize,
+            lineHeight: styles.headingLine,
+            width: styles.headingWidth,
+            marginBottom: styles.headingGap,
+          }}
+        >
           Select Your Account Type:
         </Text>
 
-        <Pressable className="mb-4 w-full h-[190px] bg-[#ffffff] opacity-80 rounded-[30px] flex-row items-center">
-          <Patient />
-          <View className="flex-1">
-            <Text className="font-geom-medium text-4xl text-[#262626]">
-              Penguin
-            </Text>
-            <Text className="font-geom-medium text-base leading-4 mr-8">
-              A Patient recovering from Anorexia Nervosa.
-            </Text>
-          </View>
-        </Pressable>
+        <AccountCard
+          Icon={Patient}
+          title="Penguin"
+          description="A Patient recovering from Anorexia Nervosa."
+          styles={styles}
+        />
 
-        <Pressable 
-          className="mb-4 w-full h-[190px] bg-[#ffffff] opacity-80 rounded-[30px] flex-row items-center"
+        <AccountCard
+          Icon={Professional}
+          title="Owl"
+          description="Therapist, dietician, or any health professional assisting a patient."
           onPress={() => navigation.navigate("Professional")}
-        >
-          <Professional />
-          <View className="flex-1">
-            <Text className="font-geom-medium text-4xl text-[#262626]">
-              Owl
-            </Text>
-            <Text className="font-geom-medium text-base leading-4 mr-8">
-              Therapist, dietician, or any health professional assisting a patient.
-            </Text>
-          </View>
-        </Pressable>
+          styles={styles}
+        />
 
-        <Pressable className="w-full h-[190px] bg-[#ffffff] opacity-80 rounded-[30px] flex-row items-center">
-          <Friends />
-          <View className="flex-1">
-            <Text className="font-geom-medium text-4xl text-[#262626]">
-              Bunny
-            </Text>
-            <Text className="font-geom-medium text-base leading-4 mr-8">
-              Family, friend, or supporter of a recovering penguin.
-            </Text>
-          </View>
-        </Pressable>
-      </View>
+        <AccountCard
+          Icon={Friends}
+          title="Bunny"
+          description="Family, friend, or supporter of a recovering penguin."
+          onPress={() => navigation.navigate("SelectSupporter")}
+          styles={{ ...styles, cardGap: 0 }}
+        />
+      </ScrollView>
     </View>
   );
 }
