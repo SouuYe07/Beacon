@@ -21,14 +21,14 @@ const Tabs = () => {
   const { width } = useWindowDimensions();
   const sideOffset = Math.max((width - TAB_BAR_WIDTH) / 2, 0);
 
-  return(
+  return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarShowLabel: false,
-        tabBarStyle : {
+        tabBarStyle: {
           position: 'absolute',
-          bottom: 25,
+          bottom: 35,
           start: sideOffset,
           end: sideOffset,
           width: undefined,
@@ -49,10 +49,10 @@ const Tabs = () => {
         tabBarIcon: ({ color, focused }) => {
           const IconComponent =
             route.name === "Homepage" ? HomepageSvg :
-            route.name === "Calendar" ? CalendarSvg :
-            route.name === "Create Session" ? CreateSessionSvg :
-            route.name === "Messages" ? MessagesSvg :
-            null;
+              route.name === "Calendar" ? CalendarSvg :
+                route.name === "Create Session" ? CreateSessionSvg :
+                  route.name === "Messages" ? MessagesSvg :
+                    null;
 
           if (!IconComponent) return null;
 
@@ -61,20 +61,23 @@ const Tabs = () => {
               style={{
                 width: "100%",
                 height: "100%",
-                borderRadius: 15,
-                backGroundColor: focused ? 'rgba(255, 255, 255, 0.38)' : 'transparent',
+                borderRadius: 25,
+                backgroundColor: focused ? 'rgba(255, 255, 255, 0.38)' : 'transparent',
+                flex: '1',
+                justifyContent: 'center',
+                alignItem: 'center'
               }}
             >
-              <IconComponent color={color}/>
+              <IconComponent color={color} />
             </View>
           );
         }
       })}
     >
-      <Tab.Screen name="Homepage" component={Homepage}/>
-      <Tab.Screen name="Calendar" component={Calendar}/>
-      <Tab.Screen name="Create Session" component={CreateSession}/>
-      <Tab.Screen name="Messages" component={Messages}/>
+      <Tab.Screen name="Homepage" component={Homepage} />
+      <Tab.Screen name="Calendar" component={Calendar} />
+      <Tab.Screen name="Create Session" component={CreateSession} />
+      <Tab.Screen name="Messages" component={Messages} />
     </Tab.Navigator>
   );
 }
