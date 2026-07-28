@@ -28,8 +28,9 @@ export default function SelectSupporter() {
         contentContainerStyle={{
           flexGrow: 1,
           justifyContent: "center",
-          paddingTop: insets.top + 72,
-          paddingBottom: insets.bottom + 16,
+          // Nudge content slightly upward (back button is absolute)
+          paddingTop: insets.top + 4,
+          paddingBottom: insets.bottom + 48,
           paddingHorizontal: styles.sidePad,
         }}
         showsVerticalScrollIndicator={false}

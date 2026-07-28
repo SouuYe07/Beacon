@@ -1,5 +1,5 @@
 import React from "react";
-import { View, useWindowDimensions } from "react-native";
+import { View, Pressable, useWindowDimensions, StyleSheet } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import Calendar from "../../navigation/professional/Calendar.js";
@@ -14,15 +14,11 @@ import MessagesSvg from "../../../assets/Navigation/Message.svg";
 
 const Tab = createBottomTabNavigator();
 
-// Same height/style as bear/bunny; 320 wide for 4 owl tabs
 const TAB_BAR_WIDTH = 320;
 const TAB_BAR_HEIGHT = 70;
-
-const ACTIVE_PILL = {
-  width: 76,
-  height: 68,
-  backgroundColor: "rgba(255, 255, 255, 0.38)",
-};
+const TAB_BAR_RADIUS = 30;
+const ACTIVE_PILL_WIDTH = 76;
+const ICON_SIZE = 29;
 
 const HOME_PILL_RADIUS = {
   borderTopLeftRadius: 30,
@@ -45,97 +41,88 @@ const END_PILL_RADIUS = {
   borderBottomRightRadius: 30,
 };
 
-const Tabs = () => {
+function ProfessionalTabBar({ state, descriptors, navigation }) {
   const { width } = useWindowDimensions();
   const sideOffset = Math.max((width - TAB_BAR_WIDTH) / 2, 0);
 
   return (
-    <Tab.Navigator
-      screenOptions={({ route }) => {
-        const pillRadius =
-          route.name === "Homepage"
-            ? HOME_PILL_RADIUS
-            : route.name === "Messages"
-              ? END_PILL_RADIUS
-              : CENTER_PILL_RADIUS;
+    <View style={[styles.wrap, { paddingHorizontal: sideOffset }]} pointerEvents="box-none">
+      <View style={styles.bar}>
+        {state.routes.map((route, index) => {
+          const focused = state.index === index;
+          const { options } = descriptors[route.key];
 
-        return {
-          headerShown: false,
-          tabBarShowLabel: false,
-          tabBarStyle: {
-            position: "absolute",
-            bottom: 35,
-            start: sideOffset,
-            end: sideOffset,
-            height: TAB_BAR_HEIGHT,
-            paddingTop: 0,
-            paddingBottom: 0,
-            paddingHorizontal: 4,
-            borderRadius: TAB_BAR_HEIGHT / 2,
-            backgroundColor: "transparent",
-            borderTopWidth: 0,
-            borderWidth: 1,
-            borderColor: "#D0D2D1",
-            elevation: 0,
-            shadowOpacity: 0,
-            overflow: "hidden",
-          },
-          tabBarBackground: () => (
+          const IconComponent =
+            route.name === "Homepage"
+              ? HomepageSvg
+              : route.name === "Calendar"
+                ? CalendarSvg
+                : route.name === "Create Session"
+                  ? CreateSessionSvg
+                  : MessagesSvg;
+
+          const pillRadius =
+            route.name === "Homepage"
+              ? HOME_PILL_RADIUS
+              : route.name === "Messages"
+                ? END_PILL_RADIUS
+                : CENTER_PILL_RADIUS;
+
+          const onPress = () => {
+            const event = navigation.emit({
+              type: "tabPress",
+              target: route.key,
+              canPreventDefault: true,
+            });
+            if (!focused && !event.defaultPrevented) {
+              navigation.navigate(route.name);
+            }
+          };
+
+          return (
             <View
-              style={{
-                flex: 1,
-                backgroundColor: "rgba(255, 255, 255, 0.38)",
-                borderRadius: TAB_BAR_HEIGHT / 2,
-              }}
-            />
-          ),
-          tabBarItemStyle: {
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
-            paddingHorizontal: 0,
-          },
-          tabBarIconStyle: {
-            width: ACTIVE_PILL.width,
-            height: ACTIVE_PILL.height,
-            marginTop: 0,
-            marginBottom: 0,
-          },
-          tabBarActiveTintColor: "#32759F",
-          tabBarInactiveTintColor: "#5A5A5A",
-          tabBarIcon: ({ color, focused }) => {
-            const IconComponent =
-              route.name === "Homepage"
-                ? HomepageSvg
-                : route.name === "Calendar"
-                  ? CalendarSvg
-                  : route.name === "Create Session"
-                    ? CreateSessionSvg
-                    : route.name === "Messages"
-                      ? MessagesSvg
-                      : null;
-
-            if (!IconComponent) return null;
-
-            return (
+              key={route.key}
+              style={[
+                styles.item,
+                route.name === "Homepage" && styles.itemStart,
+                route.name === "Messages" && styles.itemEnd,
+              ]}
+            >
               <View
-                style={{
-                  width: ACTIVE_PILL.width,
-                  height: ACTIVE_PILL.height,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: focused
-                    ? ACTIVE_PILL.backgroundColor
-                    : "transparent",
-                  ...pillRadius,
-                }}
+                pointerEvents="none"
+                style={[
+                  styles.pill,
+                  pillRadius,
+                  focused && styles.pillActive,
+                ]}
+              />
+              <Pressable
+                accessibilityRole="button"
+                accessibilityState={focused ? { selected: true } : {}}
+                accessibilityLabel={options.tabBarAccessibilityLabel ?? route.name}
+                onPress={onPress}
+                android_ripple={{ color: "transparent" }}
+                style={styles.pressable}
               >
-                <IconComponent width={29} height={29} color={color} />
-              </View>
-            );
-          },
-        };
-      }}
+                <IconComponent
+                  width={ICON_SIZE}
+                  height={ICON_SIZE}
+                  color={focused ? "#32759F" : "#5A5A5A"}
+                />
+              </Pressable>
+            </View>
+          );
+        })}
+      </View>
+    </View>
+  );
+}
+
+const Tabs = () => {
+  return (
+    <Tab.Navigator
+      tabBar={(props) => <ProfessionalTabBar {...props} />}
+      screenOptions={{ headerShown: false }}
     >
       <Tab.Screen name="Homepage" component={Homepage} />
       <Tab.Screen name="Calendar" component={Calendar} />
@@ -146,3 +133,51 @@ const Tabs = () => {
 };
 
 export default Tabs;
+
+const styles = StyleSheet.create({
+  wrap: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    bottom: 35,
+    alignItems: "center",
+  },
+  bar: {
+    width: TAB_BAR_WIDTH,
+    height: TAB_BAR_HEIGHT,
+    borderRadius: TAB_BAR_RADIUS,
+    backgroundColor: "rgba(255, 255, 255, 0.38)",
+    borderWidth: 2,
+    borderColor: "#D0D2D1",
+    flexDirection: "row",
+    overflow: "hidden",
+  },
+  item: {
+    flex: 1,
+    height: TAB_BAR_HEIGHT,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  itemStart: {
+    alignItems: "flex-start",
+  },
+  itemEnd: {
+    alignItems: "flex-end",
+  },
+  pill: {
+    position: "absolute",
+    top: 0,
+    bottom: 0,
+    width: ACTIVE_PILL_WIDTH,
+    height: TAB_BAR_HEIGHT,
+  },
+  pillActive: {
+    backgroundColor: "rgba(255, 255, 255, 0.55)",
+  },
+  pressable: {
+    width: ACTIVE_PILL_WIDTH,
+    height: TAB_BAR_HEIGHT,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
