@@ -1,4 +1,4 @@
-import { View, Pressable, StyleSheet, Platform } from "react-native";
+import { View, Pressable, StyleSheet } from "react-native";
 import { BlurView } from "expo-blur";
 import TabIcon from "./TabIcon";
 import { TAB_BAR } from "./tabConfig";
@@ -11,7 +11,6 @@ export default function GlassTabBar({ state, descriptors, navigation }) {
           intensity={40}
           tint="light"
           style={styles.bar}
-          {...(Platform.OS === "android" ? { experimentalBlurMethod: "dimezisBlurView" } : null)}
         >
           <View style={[StyleSheet.absoluteFill, styles.barTint]} />
           {state.routes.map((route, index) => {
