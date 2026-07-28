@@ -1,4 +1,4 @@
-import { Text } from 'react-native';
+import { View } from 'react-native';
 import Tabs from "../../components/professional/Tabs.js";
 
 export default function Professional() {
