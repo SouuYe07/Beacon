@@ -6,7 +6,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import SelectUser from "./src/navigation/SelectUser";
-import Professional from "./src/navigation/Professional/Professional.js";
+import Professional from "./src/navigation/professional/Professional.js";
 
 const Stack = createNativeStackNavigator();
 
