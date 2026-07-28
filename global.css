@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  /* Sets Geom-Regular as the default font for all Text components */
+  Text {
+    font-family: 'Geom-Regular';
+  }
+}
