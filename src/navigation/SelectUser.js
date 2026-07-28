@@ -1,4 +1,5 @@
 import { View, Text, Pressable } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import Background from '../components/Background';
 
 import Patient from '../../assets/Animals/Patient.svg';
@@ -6,6 +7,8 @@ import Professional from '../../assets/Animals/Professional.svg';
 import Friends from '../../assets/Animals/Friends.svg';
 
 export default function SelectUser() {
+  const navigation = useNavigation();
+
   return (
     <View className="flex-1 relative">
       <Background />
@@ -27,7 +30,10 @@ export default function SelectUser() {
           </View>
         </Pressable>
 
-        <Pressable className="mb-4 w-full h-[190px] bg-[#ffffff] opacity-80 rounded-[30px] flex-row items-center">
+        <Pressable 
+          className="mb-4 w-full h-[190px] bg-[#ffffff] opacity-80 rounded-[30px] flex-row items-center"
+          onPress={() => navigation.navigate("Professional")}
+        >
           <Professional />
           <View className="flex-1">
             <Text className="font-geom-medium text-4xl text-[#262626]">

@@ -2,7 +2,13 @@ import "./global.css";
 import { useEffect } from "react";
 import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 import SelectUser from "./src/navigation/SelectUser";
+import Professional from "./src/navigation/Professional/Professional.js";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [loaded, error] = useFonts({
@@ -32,5 +38,12 @@ export default function App() {
     return null;
   }
 
-  return <SelectUser />;
+  return(
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="SelectUser" component={SelectUser} />
+        <Stack.Screen name="Professional" component={Professional} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
