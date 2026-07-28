@@ -1,10 +1,11 @@
-import React from 'react';
-import { Text } from 'react-native';
+import { View } from "react-native";
+import Background from "../../components/Background";
 
 export default function Messages() {
   return (
-    <Text>
-      Messages
-    </Text>
+    <View className="flex-1 relative">
+      <Background />
+      <View className="flex-1 z-10" />
+    </View>
   );
 }

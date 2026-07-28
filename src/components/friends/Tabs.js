@@ -67,7 +67,7 @@ export default function Tabs({ role = "family" }) {
           tabBarShowLabel: false,
           tabBarStyle: {
             position: "absolute",
-            bottom: 25,
+            bottom: 35,
             start: sideOffset,
             end: sideOffset,
             height: TAB_BAR_HEIGHT,

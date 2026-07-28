@@ -1,7 +1,8 @@
 import { View, Text, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Background from "../components/Background";
-import { AccountCard, useSelectLayout } from "./AccountCard";
+import AccountCard from "../components/AccountCard";
+import useSelectLayout from "../hooks/useSelectLayout";
 
 import Patient from "../../assets/Animals/Patient.svg";
 import Professional from "../../assets/Animals/Professional.svg";
