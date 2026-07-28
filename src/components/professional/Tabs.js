@@ -60,7 +60,6 @@ const Tabs = () => {
               : CENTER_PILL_RADIUS;
 
         return {
-
           headerShown: false,
           tabBarShowLabel: false,
           tabBarStyle: {
