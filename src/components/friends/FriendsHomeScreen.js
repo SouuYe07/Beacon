@@ -10,6 +10,7 @@ import BunnySvg from "../../../assets/Navigation/Bunny.svg";
 import ProfileSummaryModal from "./ProfileSummaryModal";
 import NotificationsModal from "./NotificationsModal";
 import UpdateDetailModal from "./UpdateDetailModal";
+import IconButton from "../IconButton.js";
 import { getDefaultProfile } from "./profileDefaults";
 import { UPDATES, getWeekDays, toDateKey } from "./updatesData";
 
@@ -18,42 +19,6 @@ const FILTERS = ["All", "Dietician", "Psychiatrist", "Logs", "Clinic"];
 
 function WhitePanel({ style, children }) {
   return <View style={[styles.panel, style]}>{children}</View>;
-}
-
-function IconButton({
-  name,
-  Icon,
-  onPress,
-  size,
-  buttonSize,
-  accessibilityLabel,
-  iconColor = "#262626",
-}) {
-  const hit = buttonSize ?? size + 18;
-  return (
-    <Pressable
-      onPress={onPress}
-      hitSlop={6}
-      accessibilityRole="button"
-      accessibilityLabel={accessibilityLabel}
-      android_ripple={{ color: "transparent" }}
-      style={{
-        width: hit,
-        height: hit,
-        borderRadius: hit / 2,
-        backgroundColor: "#FFFFFF",
-        alignItems: "center",
-        justifyContent: "center",
-        overflow: "hidden",
-      }}
-    >
-      {Icon ? (
-        <Icon width={size} height={size} color={iconColor} />
-      ) : (
-        <MaterialCommunityIcons name={name} size={size} color={iconColor} />
-      )}
-    </Pressable>
-  );
 }
 
 function UpdateCard({ item, s, showMarkRead, onMarkRead, onPress, isFirst }) {
@@ -176,10 +141,10 @@ export default function FriendsHomeScreen() {
 
   const selectedDateLabel = selectedDay
     ? selectedDay.date.toLocaleDateString("en-US", {
-        weekday: "short",
-        month: "short",
-        day: "numeric",
-      })
+      weekday: "short",
+      month: "short",
+      day: "numeric",
+    })
     : undefined;
 
   const monthLabel = weekDays[0]?.date.toLocaleString("en-US", {
@@ -210,10 +175,10 @@ export default function FriendsHomeScreen() {
 
   const selectedDayTitle = selectedDay
     ? selectedDay.date.toLocaleDateString("en-US", {
-        weekday: "long",
-        month: "short",
-        day: "numeric",
-      })
+      weekday: "long",
+      month: "short",
+      day: "numeric",
+    })
     : "Updates";
 
   return (
@@ -521,15 +486,15 @@ export default function FriendsHomeScreen() {
 
                 {earlierOpen
                   ? earlierItems.map((item, index) => (
-                      <UpdateCard
-                        key={item.id}
-                        item={item}
-                        s={s}
-                        isFirst={index === 0}
-                        showMarkRead={false}
-                        onPress={() => openUpdateDetail(item)}
-                      />
-                    ))
+                    <UpdateCard
+                      key={item.id}
+                      item={item}
+                      s={s}
+                      isFirst={index === 0}
+                      showMarkRead={false}
+                      onPress={() => openUpdateDetail(item)}
+                    />
+                  ))
                   : null}
               </View>
             ) : null}
