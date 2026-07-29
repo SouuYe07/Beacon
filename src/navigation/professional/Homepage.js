@@ -20,7 +20,6 @@ export default function Homepage() {
   const [profile, setProfile] = useState(() => getDefaultProfile(role));
   const [profileOpen, setProfileOpen] = useState(false);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
-  const [activeUpdate, setActiveUpdate] = useState(null);
 
   useEffect(() => {
     setProfile(getDefaultProfile(role));
@@ -42,19 +41,21 @@ export default function Homepage() {
         showsVerticalScrollIndicator={false}
         bounces={false}
       >
-        <View className="flex-row">
-          <Text className="font-geom-medium"
-            style={{
-              fontSize: styles.headingSize,
-              lineHeight: styles.headingLine,
-              width: styles.headingWidth,
-              marginBottom: styles.headingGap,
-            }}
-          >
-            Patient List
-          </Text>
+        <View className="flex-row center mb-3 justify-center">
+          <View className="justify-center flex">
+            <Text className="font-geom-medium"
+              style={{
+                fontSize: styles.headingSize,
+                lineHeight: styles.headingLine,
+                width: styles.headingWidth,
+                marginBottom: styles.headingGap,
+              }}
+            >
+              Patient List
+            </Text>
+          </View>
 
-          <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <View className="flex-row items-center">
             <View style={{ marginRight: s(10) }}>
               <IconButton
                 name="bell-outline"
