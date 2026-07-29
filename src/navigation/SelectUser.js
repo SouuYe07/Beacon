@@ -44,6 +44,7 @@ export default function SelectUser() {
           Icon={Patient}
           title="Penguin"
           description="A Patient recovering from Anorexia Nervosa."
+          onPress={() => navigation.navigate("Patient")}
           styles={styles}
         />
 

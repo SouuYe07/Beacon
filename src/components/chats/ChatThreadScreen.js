@@ -108,9 +108,6 @@ export default function ChatThreadScreen() {
   const actionIcon = s(34);
   const composerIcon = s(COMPOSER_ICON);
   const barRadius = s(30);
-  const headerAvatarW = s(HEADER_AVATAR_W);
-  const headerAvatarH = s(HEADER_AVATAR_H);
-
   const headerHeight = insets.top + s(88);
   const composerHeight = s(93);
   const composerPadTop = s(16);
@@ -255,7 +252,7 @@ export default function ChatThreadScreen() {
               <BackIcon width={s(40)} height={s(40)} />
             </Pressable>
 
-            <ProfileIcon width={headerAvatarW} height={headerAvatarH} />
+            <ProfileIcon width={s(HEADER_AVATAR_W)} height={s(HEADER_AVATAR_H)} />
 
             <View style={{ flex: 1, marginLeft: s(10), marginRight: s(8) }}>
               <Text

@@ -19,6 +19,7 @@ import SelectUser from "./src/navigation/SelectUser";
 import SelectSupporter from "./src/navigation/SelectSupporter";
 import FriendsHome from "./src/navigation/FriendsHome";
 import Professional from "./src/navigation/professional/Professional.js";
+import Patient from "./src/navigation/patient/Patient";
 
 const Stack = createNativeStackNavigator();
 
@@ -94,6 +95,7 @@ export default function App() {
           >
             <Stack.Screen name="SelectUser" component={SelectUser} />
             <Stack.Screen name="SelectSupporter" component={SelectSupporter} />
+            <Stack.Screen name="Patient" component={Patient} />
             <Stack.Screen name="FriendsHome" component={FriendsHome} />
             <Stack.Screen name="Professional" component={Professional} />
           </Stack.Navigator>
