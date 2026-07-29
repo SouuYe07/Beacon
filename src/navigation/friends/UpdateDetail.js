@@ -3,7 +3,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import Background from "../../components/Background";
 import useChatsLayout from "../../hooks/useChatsLayout";
-import { getUpdateById } from "../../components/friends/updatesData";
+import { getUpdateById } from "../../components/homepage/updatesData";
 
 const ACCENT = "#32759F";
 
