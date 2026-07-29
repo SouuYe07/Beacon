@@ -9,8 +9,8 @@ import {
 } from "react-native";
 import Background from "../Background";
 import useChatsLayout from "../../hooks/useChatsLayout";
-import SearchIcon from "../../../assets/Icons/lucide_search.svg";
-import UserAvatar from "../../../assets/Icons/ix_user-profile-filled.svg";
+import SearchIcon from "../../../assets/Icons/Search.svg";
+import UserAvatar from "../../../assets/Icons/Profile.svg";
 import NextActiveIcon from "../../../assets/Icons/next-active.svg";
 
 const ACCENT = "#32759F";

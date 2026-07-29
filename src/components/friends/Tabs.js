@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Homepage from "../../navigation/friends/Homepage";
 import Calendar from "../../navigation/friends/Calendar";
 import Messages from "../../navigation/friends/Messages";
+import { FriendsRoleContext } from "./FriendsRoleContext";
 
 import BearSvg from "../../../assets/Navigation/Bear.svg";
 import BunnySvg from "../../../assets/Navigation/Bunny.svg";
@@ -124,14 +125,16 @@ export default function Tabs({ role = "family" }) {
   const HomeIcon = role === "friend" ? BunnySvg : BearSvg;
 
   return (
-    <Tab.Navigator
-      tabBar={(props) => <FriendsTabBar {...props} HomeIcon={HomeIcon} />}
-      screenOptions={{ headerShown: false }}
-    >
-      <Tab.Screen name="Homepage" component={Homepage} />
-      <Tab.Screen name="Calendar" component={Calendar} />
-      <Tab.Screen name="Messages" component={Messages} />
-    </Tab.Navigator>
+    <FriendsRoleContext.Provider value={role}>
+      <Tab.Navigator
+        tabBar={(props) => <FriendsTabBar {...props} HomeIcon={HomeIcon} />}
+        screenOptions={{ headerShown: false }}
+      >
+        <Tab.Screen name="Homepage" component={Homepage} />
+        <Tab.Screen name="Calendar" component={Calendar} />
+        <Tab.Screen name="Messages" component={Messages} />
+      </Tab.Navigator>
+    </FriendsRoleContext.Provider>
   );
 }
 

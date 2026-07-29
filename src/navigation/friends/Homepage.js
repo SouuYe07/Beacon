@@ -1,11 +1,14 @@
-import { View } from "react-native";
-import Background from "../../components/Background";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import FriendsHomeScreen from "../../components/friends/FriendsHomeScreen";
+import UpdateDetail from "./UpdateDetail";
+
+const Stack = createNativeStackNavigator();
 
 export default function Homepage() {
   return (
-    <View className="flex-1 relative">
-      <Background />
-      <View className="flex-1 z-10" />
-    </View>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="HomeMain" component={FriendsHomeScreen} />
+      <Stack.Screen name="UpdateDetail" component={UpdateDetail} />
+    </Stack.Navigator>
   );
 }
