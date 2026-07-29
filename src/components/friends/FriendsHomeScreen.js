@@ -7,12 +7,12 @@ import useChatsLayout from "../../hooks/useChatsLayout";
 import { useFriendsRole } from "./FriendsRoleContext";
 import BearSvg from "../../../assets/Navigation/Bear.svg";
 import BunnySvg from "../../../assets/Navigation/Bunny.svg";
-import ProfileSummaryModal from "./ProfileSummaryModal";
-import NotificationsModal from "./NotificationsModal";
-import UpdateDetailModal from "./UpdateDetailModal";
-import IconButton from "../IconButton.js";
-import { getDefaultProfile } from "./profileDefaults";
-import { UPDATES, getWeekDays, toDateKey } from "./updatesData";
+import ProfileSummaryModal from "../homepage/ProfileSummaryModal";
+import NotificationsModal from "../homepage/NotificationsModal";
+import UpdateDetailModal from "../homepage/UpdateDetailModal";
+import IconButton from "../IconButton";
+import { getDefaultProfile } from "../homepage/profileDefaults";
+import { UPDATES, getWeekDays, toDateKey } from "../homepage/updatesData";
 
 const ACCENT = "#32759F";
 const FILTERS = ["All", "Dietician", "Psychiatrist", "Logs", "Clinic"];

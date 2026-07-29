@@ -1,5 +1,8 @@
 import { Pressable } from 'react-native';
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import ProfileSummaryModal from "./homepage/ProfileSummaryModal";
+import NotificationsModal from './homepage/NotificationsModal';
+import UpdateDetailModal from './homepage/UpdateDetailModal';
 
 export default function IconButton({
   name, Icon, onPress, size, buttonSize, accessibilityLabel, iconColor = "#262626"
