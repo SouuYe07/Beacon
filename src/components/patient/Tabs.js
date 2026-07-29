@@ -9,10 +9,10 @@ import Group from "../../navigation/patient/Group";
 import Food from "../../navigation/patient/Food";
 import Messages from "../../navigation/patient/Messages";
 
-import HomepageSvg from "../../../assets/Icons/Vector.svg";
+import HomepageSvg from "../../../assets/Icons/tab-penguin.svg";
 import CalendarSvg from "../../../assets/Navigation/Calendar.svg";
-import GroupSvg from "../../../assets/Icons/Group.svg";
-import FoodSvg from "../../../assets/Icons/mdi_utensils-clean.svg";
+import GroupSvg from "../../../assets/Icons/tab-group.svg";
+import FoodSvg from "../../../assets/Icons/tab-food.svg";
 import MessagesSvg from "../../../assets/Navigation/Message.svg";
 
 const Tab = createBottomTabNavigator();
@@ -57,8 +57,14 @@ function PatientTabBar({ state, descriptors, navigation }) {
   const sideOffset = Math.max((width - TAB_BAR_WIDTH) / 2, 0);
 
   const current = state.routes[state.index];
-  const nestedRoute = getFocusedRouteNameFromRoute(current) ?? "ChatsList";
+  const nestedRoute =
+    getFocusedRouteNameFromRoute(current) ??
+    (current.name === "Messages" ? "ChatsList" : "FoodPrompt");
   if (current.name === "Messages" && nestedRoute === "ChatThread") {
+    return null;
+  }
+  // Full-screen camera only — prompt + review keep the tab bar
+  if (current.name === "Food" && nestedRoute === "FoodCamera") {
     return null;
   }
 
