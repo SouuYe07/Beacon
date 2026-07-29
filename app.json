@@ -30,6 +30,12 @@
       "expo-splash-screen",
       "expo-status-bar",
       [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow Beacon to take food photos."
+        }
+      ],
+      [
         "expo-navigation-bar",
         {
           "hidden": true,
