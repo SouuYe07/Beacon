@@ -1,5 +1,5 @@
-import ChatsScreen from "../../components/chats/ChatsScreen";
+import MessagesStack from "../MessagesStack";
 
 export default function Messages() {
-  return <ChatsScreen />;
+  return <MessagesStack />;
 }

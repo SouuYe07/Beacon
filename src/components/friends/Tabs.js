@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Pressable, useWindowDimensions, StyleSheet } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 
 import Homepage from "../../navigation/friends/Homepage";
 import Calendar from "../../navigation/friends/Calendar";
@@ -45,6 +46,12 @@ const END_PILL_RADIUS = {
 function FriendsTabBar({ state, descriptors, navigation, HomeIcon }) {
   const { width } = useWindowDimensions();
   const sideOffset = Math.max((width - TAB_BAR_WIDTH) / 2, 0);
+
+  const current = state.routes[state.index];
+  const nestedRoute = getFocusedRouteNameFromRoute(current) ?? "ChatsList";
+  if (current.name === "Messages" && nestedRoute === "ChatThread") {
+    return null;
+  }
 
   return (
     <View style={[styles.wrap, { paddingHorizontal: sideOffset }]} pointerEvents="box-none">

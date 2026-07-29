@@ -1,12 +1,15 @@
 import { useMemo, useState } from "react";
 import { Modal, View, Text, Pressable, ScrollView, StyleSheet } from "react-native";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import UpdateDetailModal from "./UpdateDetailModal";
+import { getUpdateById, getWeekDays } from "./updatesData";
 
 const ACCENT = "#32759F";
 
 const SEED_NOTIFICATIONS = [
   {
     id: "n1",
+    updateId: "u1",
     title: "New meal plan shared",
     body: "Your dietician updated this week’s lunch options.",
     time: "12 m",
@@ -15,6 +18,7 @@ const SEED_NOTIFICATIONS = [
   },
   {
     id: "n2",
+    updateId: "u2",
     title: "Session tomorrow",
     body: "Psychiatrist talk session at 3:00 PM.",
     time: "1 h",
@@ -23,6 +27,7 @@ const SEED_NOTIFICATIONS = [
   },
   {
     id: "n3",
+    updateId: "u3",
     title: "Breakfast logged",
     body: "Penguin added oatmeal and fruit to today’s log.",
     time: "Yesterday",
@@ -31,6 +36,7 @@ const SEED_NOTIFICATIONS = [
   },
   {
     id: "n4",
+    updateId: "u5",
     title: "Care note available",
     body: "Clinic shared a short progress note with your circle.",
     time: "Mon",
@@ -39,6 +45,7 @@ const SEED_NOTIFICATIONS = [
   },
   {
     id: "n5",
+    updateId: "u4",
     title: "Weight check-in",
     body: "A new weight entry is ready for review.",
     time: "Sun",
@@ -49,6 +56,10 @@ const SEED_NOTIFICATIONS = [
 
 export default function NotificationsModal({ visible, onClose, s }) {
   const [items, setItems] = useState(SEED_NOTIFICATIONS);
+  const [activeUpdate, setActiveUpdate] = useState(null);
+  const [activeDateLabel, setActiveDateLabel] = useState(undefined);
+
+  const weekDays = useMemo(() => getWeekDays(new Date()), []);
 
   const unreadCount = useMemo(
     () => items.filter((item) => item.unread).length,
@@ -65,157 +76,185 @@ export default function NotificationsModal({ visible, onClose, s }) {
     setItems((prev) => prev.map((item) => ({ ...item, unread: false })));
   };
 
+  const openUpdate = (item) => {
+    markRead(item.id);
+    const update = getUpdateById(item.updateId);
+    if (!update) return;
+
+    const day = weekDays.find((d) => d.dayOffset === update.dayOffset);
+    setActiveDateLabel(
+      day
+        ? day.date.toLocaleDateString("en-US", {
+            weekday: "short",
+            month: "short",
+            day: "numeric",
+          })
+        : undefined
+    );
+    setActiveUpdate(update);
+  };
+
   return (
-    <Modal
-      visible={visible}
-      transparent
-      animationType="fade"
-      onRequestClose={onClose}
-      statusBarTranslucent
-    >
-      <Pressable style={styles.backdrop} onPress={onClose}>
-        <Pressable
-          onPress={() => {}}
-          style={[
-            styles.sheet,
-            {
-              borderRadius: s(30),
-              paddingHorizontal: s(20),
-              paddingTop: s(18),
-              paddingBottom: s(16),
-              marginHorizontal: s(24),
-              maxHeight: "80%",
-            },
-          ]}
-        >
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "space-between",
-              marginBottom: s(6),
-            }}
+    <>
+      <Modal
+        visible={visible}
+        transparent
+        animationType="fade"
+        onRequestClose={onClose}
+        statusBarTranslucent
+      >
+        <Pressable style={styles.backdrop} onPress={onClose}>
+          <Pressable
+            onPress={() => {}}
+            style={[
+              styles.sheet,
+              {
+                borderRadius: s(30),
+                paddingHorizontal: s(20),
+                paddingTop: s(18),
+                paddingBottom: s(16),
+                marginHorizontal: s(24),
+                maxHeight: "80%",
+              },
+            ]}
           >
-            <Text
-              className="font-geom-bold text-[#262626]"
-              style={{ fontSize: s(24), lineHeight: s(28) }}
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+                marginBottom: s(6),
+              }}
             >
-              Notifications
-            </Text>
-            <Pressable
-              onPress={onClose}
-              hitSlop={10}
-              accessibilityRole="button"
-              accessibilityLabel="Close notifications"
-            >
-              <MaterialCommunityIcons name="close" size={s(24)} color="#5A5A5A" />
-            </Pressable>
-          </View>
-
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "space-between",
-              marginBottom: s(12),
-            }}
-          >
-            <Text
-              className="font-geom-medium text-[#5A5A5A]"
-              style={{ fontSize: s(13) }}
-            >
-              {unreadCount > 0 ? `${unreadCount} unread` : "All caught up"}
-            </Text>
-            {unreadCount > 0 ? (
-              <Pressable onPress={markAllRead} hitSlop={8}>
-                <Text
-                  className="font-geom-semibold"
-                  style={{ fontSize: s(13), color: ACCENT }}
-                >
-                  Mark all read
-                </Text>
-              </Pressable>
-            ) : null}
-          </View>
-
-          <ScrollView showsVerticalScrollIndicator={false} bounces={false}>
-            {items.map((item, index) => (
-              <Pressable
-                key={item.id}
-                onPress={() => markRead(item.id)}
-                style={{
-                  flexDirection: "row",
-                  alignItems: "flex-start",
-                  paddingVertical: s(12),
-                  borderTopWidth: index === 0 ? 0 : StyleSheet.hairlineWidth,
-                  borderTopColor: "rgba(0,0,0,0.08)",
-                  opacity: item.unread ? 1 : 0.7,
-                }}
+              <Text
+                className="font-geom-bold text-[#262626]"
+                style={{ fontSize: s(24), lineHeight: s(28) }}
               >
-                <View
+                Notifications
+              </Text>
+              <Pressable
+                onPress={onClose}
+                hitSlop={10}
+                accessibilityRole="button"
+                accessibilityLabel="Close notifications"
+              >
+                <MaterialCommunityIcons name="close" size={s(24)} color="#5A5A5A" />
+              </Pressable>
+            </View>
+
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+                marginBottom: s(12),
+              }}
+            >
+              <Text
+                className="font-geom-medium text-[#5A5A5A]"
+                style={{ fontSize: s(13) }}
+              >
+                {unreadCount > 0 ? `${unreadCount} unread` : "All caught up"}
+              </Text>
+              {unreadCount > 0 ? (
+                <Pressable onPress={markAllRead} hitSlop={8}>
+                  <Text
+                    className="font-geom-semibold"
+                    style={{ fontSize: s(13), color: ACCENT }}
+                  >
+                    Mark all read
+                  </Text>
+                </Pressable>
+              ) : null}
+            </View>
+
+            <ScrollView showsVerticalScrollIndicator={false} bounces={false}>
+              {items.map((item, index) => (
+                <Pressable
+                  key={item.id}
+                  onPress={() => openUpdate(item)}
                   style={{
-                    width: s(40),
-                    height: s(40),
-                    borderRadius: s(20),
-                    backgroundColor: "rgba(50, 117, 159, 0.12)",
-                    alignItems: "center",
-                    justifyContent: "center",
+                    flexDirection: "row",
+                    alignItems: "flex-start",
+                    paddingVertical: s(12),
+                    borderTopWidth: index === 0 ? 0 : StyleSheet.hairlineWidth,
+                    borderTopColor: "rgba(0,0,0,0.08)",
+                    opacity: item.unread ? 1 : 0.7,
                   }}
                 >
-                  <MaterialCommunityIcons
-                    name={item.icon}
-                    size={s(20)}
-                    color={ACCENT}
-                  />
-                </View>
-
-                <View style={{ flex: 1, marginLeft: s(12), marginRight: s(8) }}>
                   <View
                     style={{
-                      flexDirection: "row",
+                      width: s(40),
+                      height: s(40),
+                      borderRadius: s(20),
+                      backgroundColor: "rgba(50, 117, 159, 0.12)",
                       alignItems: "center",
+                      justifyContent: "center",
                     }}
                   >
-                    <Text
-                      className="font-geom-semibold text-[#262626]"
-                      style={{ fontSize: s(15), flex: 1 }}
-                      numberOfLines={1}
-                    >
-                      {item.title}
-                    </Text>
-                    {item.unread ? (
-                      <View
-                        style={{
-                          width: s(8),
-                          height: s(8),
-                          borderRadius: s(4),
-                          backgroundColor: ACCENT,
-                          marginLeft: s(6),
-                        }}
-                      />
-                    ) : null}
+                    <MaterialCommunityIcons
+                      name={item.icon}
+                      size={s(20)}
+                      color={ACCENT}
+                    />
                   </View>
+
+                  <View style={{ flex: 1, marginLeft: s(12), marginRight: s(8) }}>
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Text
+                        className="font-geom-semibold text-[#262626]"
+                        style={{ fontSize: s(15), flex: 1 }}
+                        numberOfLines={1}
+                      >
+                        {item.title}
+                      </Text>
+                      {item.unread ? (
+                        <View
+                          style={{
+                            width: s(8),
+                            height: s(8),
+                            borderRadius: s(4),
+                            backgroundColor: ACCENT,
+                            marginLeft: s(6),
+                          }}
+                        />
+                      ) : null}
+                    </View>
+                    <Text
+                      className="font-geom-regular text-[#5A5A5A]"
+                      style={{ fontSize: s(13), marginTop: s(4) }}
+                      numberOfLines={2}
+                    >
+                      {item.body}
+                    </Text>
+                  </View>
+
                   <Text
                     className="font-geom-regular text-[#5A5A5A]"
-                    style={{ fontSize: s(13), marginTop: s(4) }}
-                    numberOfLines={2}
+                    style={{ fontSize: s(11), marginTop: s(2) }}
                   >
-                    {item.body}
+                    {item.time}
                   </Text>
-                </View>
-
-                <Text
-                  className="font-geom-regular text-[#5A5A5A]"
-                  style={{ fontSize: s(11), marginTop: s(2) }}
-                >
-                  {item.time}
-                </Text>
-              </Pressable>
-            ))}
-          </ScrollView>
+                </Pressable>
+              ))}
+            </ScrollView>
+          </Pressable>
         </Pressable>
-      </Pressable>
-    </Modal>
+      </Modal>
+
+      <UpdateDetailModal
+        visible={!!activeUpdate}
+        onClose={() => setActiveUpdate(null)}
+        update={activeUpdate}
+        dateLabel={activeDateLabel}
+        s={s}
+      />
+    </>
   );
 }
 

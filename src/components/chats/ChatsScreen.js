@@ -7,11 +7,12 @@ import {
   Pressable,
   StyleSheet,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import Background from "../Background";
 import useChatsLayout from "../../hooks/useChatsLayout";
-import SearchIcon from "../../../assets/Icons/Search.svg";
-import UserAvatar from "../../../assets/Icons/Profile.svg";
-import NextActiveIcon from "../../../assets/Icons/next-active.svg";
+import SearchIcon from "../../../assets/Icons/search.svg";
+import UserAvatar from "../../../assets/Icons/user-avatar.svg";
+import NextActiveIcon from "../../../assets/Icons/chevron-next.svg";
 
 const ACCENT = "#32759F";
 
@@ -114,8 +115,16 @@ function WhitePanel({ style, children }) {
 }
 
 export default function ChatsScreen() {
+  const navigation = useNavigation();
   const { insets, s, styles: L } = useChatsLayout();
   const [query, setQuery] = useState("");
+
+  const openThread = (item) => {
+    navigation.navigate("ChatThread", {
+      name: item.name,
+      online: true,
+    });
+  };
 
   return (
     <View className="flex-1 relative">
@@ -290,6 +299,7 @@ export default function ChatsScreen() {
             {MESSAGES.map((item, index) => (
               <Pressable
                 key={item.id}
+                onPress={() => openThread(item)}
                 style={{
                   flexDirection: "row",
                   alignItems: "center",
