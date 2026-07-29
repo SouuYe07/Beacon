@@ -1,8 +1,6 @@
-import { useState } from "react";
 import {
   View,
   Text,
-  TextInput,
   ScrollView,
   Pressable,
   StyleSheet,
@@ -10,9 +8,9 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import Background from "../Background";
 import useChatsLayout from "../../hooks/useChatsLayout";
-import SearchIcon from "../../../assets/Icons/search.svg";
 import UserAvatar from "../../../assets/Icons/user-avatar.svg";
 import NextActiveIcon from "../../../assets/Icons/chevron-next.svg";
+import Search from "../Search.js";
 
 const ACCENT = "#32759F";
 
@@ -117,7 +115,6 @@ function WhitePanel({ style, children }) {
 export default function ChatsScreen() {
   const navigation = useNavigation();
   const { insets, s, styles: L } = useChatsLayout();
-  const [query, setQuery] = useState("");
 
   const openThread = (item) => {
     navigation.navigate("ChatThread", {
@@ -149,38 +146,7 @@ export default function ChatsScreen() {
           Chats
         </Text>
 
-        <View
-          style={{
-            width: L.contentWidth,
-            alignSelf: "center",
-            height: L.searchHeight,
-            borderRadius: L.searchRadius,
-            backgroundColor: "#FFFFFF",
-            flexDirection: "row",
-            alignItems: "center",
-            paddingHorizontal: L.searchPadX,
-            marginBottom: L.sectionGap,
-          }}
-        >
-          <SearchIcon width={L.searchIcon} height={L.searchIcon} />
-          <TextInput
-            value={query}
-            onChangeText={setQuery}
-            placeholder="Search"
-            placeholderTextColor="#5A5A5A"
-            underlineColorAndroid="transparent"
-            className="font-geom-regular text-[#262626]"
-            style={{
-              flex: 1,
-              marginLeft: L.searchIconGap,
-              fontSize: L.searchFont,
-              lineHeight: L.searchFont * 1.2,
-              paddingVertical: 0,
-              includeFontPadding: false,
-              textAlignVertical: "center",
-            }}
-          />
-        </View>
+        <Search />
 
         <WhitePanel
           style={{
