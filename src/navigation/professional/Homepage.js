@@ -6,11 +6,11 @@ import useSelectLayout from "../../hooks/useSelectLayout";
 import IconButton from '../../components/IconButton.js';
 import ProfileSummaryModal from '../../components/homepage/ProfileSummaryModal.js';
 import NotificationsModal from '../../components/homepage/NotificationsModal.js';
-import UpdateDetailModal from '../../components/homepage/UpdateDetailModal.js';
 import { useProfessionalRole } from '../../components/professional/ProfessionalRoleContext.js';
 import { getDefaultProfile } from '../../components/homepage/profileDefaults.js';
 import useChatsLayout from '../../hooks/useChatsLayout.js';
 import OwlSvg from "../../../assets/Navigation/Owl.svg";
+import PatientListCard from '../../components/PatientListCard.js';
 
 export default function Homepage() {
   const role = useProfessionalRole();
@@ -30,7 +30,7 @@ export default function Homepage() {
       <Background />
 
       <ScrollView
-        className="z-10"
+        className="z-10 mb-[50px]"
         contentContainerStyle={{
           flexGrow: 1,
           justifyContent: "center",
@@ -91,7 +91,20 @@ export default function Homepage() {
         </View>
 
         <Search />
-      </ScrollView>
-    </View>
+
+        <View className="w-full h-[500px] mt-2 bg-white opacity-70 rounded-[30px]">
+          <ScrollView
+            className="h-full my-4"
+            contentContainerStyle={{ display: 'flex', alignItems: 'center' }}
+          >
+            <PatientListCard />
+            <PatientListCard />
+            <PatientListCard />
+            <PatientListCard />
+            <PatientListCard />
+          </ScrollView>
+        </View>
+      </ScrollView >
+    </View >
   );
 }
