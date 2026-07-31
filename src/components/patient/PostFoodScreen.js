@@ -3,6 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 import Svg, { Rect } from "react-native-svg";
 import Background from "../Background";
 import useFoodLayout from "../../hooks/useFoodLayout";
+import useChatsLayout from "../../hooks/useChatsLayout";
 import CameraIcon from "../../../assets/Icons/food-camera.svg";
 
 const OUTER_W = 380;
@@ -13,11 +14,15 @@ const CAMERA_SIZE = 85;
 
 export default function PostFoodScreen() {
   const navigation = useNavigation();
-  const { s, sx, width, height, topPad, tabClearance } = useFoodLayout();
+  const { s, sx, width, height, tabClearance } = useFoodLayout();
+  const { insets, styles: L } = useChatsLayout();
 
-  const titleSize = s(36);
-  const titleBlock = titleSize * 1.15 + s(24);
-  const available = Math.max(height - topPad - titleBlock - tabClearance, s(280));
+  const headerTop = insets.top + L.topPad;
+  const titleBlock = L.titleSize * 1.15 + L.titleGap;
+  const available = Math.max(
+    height - headerTop - titleBlock - tabClearance,
+    s(280)
+  );
 
   const outerW = Math.min(sx(OUTER_W), width - sx(40));
   // Elongate to fill most of the space between title and tab bar
@@ -38,18 +43,17 @@ export default function PostFoodScreen() {
       <View
         className="z-10 flex-1"
         style={{
-          paddingTop: topPad,
+          paddingTop: headerTop,
           paddingBottom: tabClearance,
-          paddingHorizontal: sx(25),
+          paddingHorizontal: L.sidePad,
         }}
       >
         <Text
-          className="font-geom-medium"
+          className="font-geom-bold text-[#262626]"
           style={{
-            fontSize: titleSize,
-            lineHeight: titleSize * 1.15,
-            color: "#262626",
-            marginBottom: s(24),
+            fontSize: L.titleSize,
+            lineHeight: L.titleSize * 1.15,
+            marginBottom: L.titleGap,
           }}
         >
           Post Food

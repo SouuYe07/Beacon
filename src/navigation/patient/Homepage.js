@@ -1,11 +1,5 @@
-import { View } from "react-native";
-import Background from "../../components/Background";
+import PatientHomeScreen from "../../components/patient/PatientHomeScreen";
 
 export default function Homepage() {
-  return (
-    <View className="flex-1 relative">
-      <Background />
-      <View className="flex-1 z-10" />
-    </View>
-  );
+  return <PatientHomeScreen />;
 }

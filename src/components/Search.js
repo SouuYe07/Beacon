@@ -1,26 +1,36 @@
-import { View, TextInput } from 'react-native';
+import { View, TextInput } from "react-native";
 import useChatsLayout from "../hooks/useChatsLayout";
 import SearchIcon from "../../assets/Icons/search.svg";
 
-export default function Search() {
+export default function Search({
+  value,
+  onChangeText,
+  placeholder = "Search",
+  style,
+}) {
   const { styles: L } = useChatsLayout();
   return (
     <View
-      style={{
-        width: L.contentWidth,
-        alignSelf: "center",
-        height: L.searchHeight,
-        borderRadius: L.searchRadius,
-        backgroundColor: "#FFFFFF",
-        flexDirection: "row",
-        alignItems: "center",
-        paddingHorizontal: L.searchPadX,
-        marginBottom: L.sectionGap,
-      }}
+      style={[
+        {
+          width: L.contentWidth,
+          alignSelf: "center",
+          height: L.searchHeight,
+          borderRadius: L.searchRadius,
+          backgroundColor: "#FFFFFF",
+          flexDirection: "row",
+          alignItems: "center",
+          paddingHorizontal: L.searchPadX,
+          marginBottom: L.sectionGap,
+        },
+        style,
+      ]}
     >
       <SearchIcon width={L.searchIcon} height={L.searchIcon} />
       <TextInput
-        placeholder="Search"
+        value={value}
+        onChangeText={onChangeText}
+        placeholder={placeholder}
         placeholderTextColor="#5A5A5A"
         underlineColorAndroid="transparent"
         className="font-geom-regular text-[#262626]"

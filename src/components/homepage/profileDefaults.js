@@ -1,8 +1,21 @@
 import Bunny from "../../../assets/Animals/Friends.svg";
 import PolarBear from "../../../assets/Animals/Family.svg";
 import Owl from "../../../assets/Animals/Professional.svg";
+import Penguin from "../../../assets/Animals/Patient.svg";
 
 export function getDefaultProfile(role) {
+  if (role === "patient") {
+    return {
+      displayName: "Penguin",
+      fullName: "Sam Rivera",
+      roleLabel: "Patient",
+      email: "patient@beacon.app",
+      phone: "+1 (555) 010-3344",
+      Mascot: Penguin,
+      mascotScale: 1,
+    };
+  }
+
   if (role === "friend") {
     return {
       displayName: "Bunny",
