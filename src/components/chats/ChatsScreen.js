@@ -260,9 +260,13 @@ export default function ChatsScreen() {
             keyboardShouldPersistTaps="handled"
             keyboardDismissMode="on-drag"
             style={{ flex: 1 }}
-            contentContainerStyle={{ paddingBottom: s(4) }}
+            contentContainerStyle={{ paddingBottom: s(14) }}
           >
-            {MESSAGES.map((item, index) => (
+            {MESSAGES.map((item, index) => {
+              const badgeSize = s(22);
+              const unreadLabel = String(item.unread ?? "");
+              const badgeWide = unreadLabel.length > 1;
+              return (
               <Pressable
                 key={item.id}
                 onPress={() => openThread(item)}
@@ -303,7 +307,7 @@ export default function ChatsScreen() {
                   </Text>
                 </View>
 
-                <View style={{ alignItems: "flex-end", minWidth: s(52) }}>
+                <View style={{ alignItems: "flex-end", minWidth: s(56) }}>
                   <Text
                     className="font-geom-regular text-[#5A5A5A]"
                     style={{ fontSize: s(12) }}
@@ -314,26 +318,34 @@ export default function ChatsScreen() {
                     <View
                       style={{
                         marginTop: s(6),
-                        minWidth: s(20),
-                        height: s(20),
-                        borderRadius: s(10),
+                        width: badgeWide ? undefined : badgeSize,
+                        minWidth: badgeSize,
+                        height: badgeSize,
+                        borderRadius: badgeSize / 2,
                         backgroundColor: ACCENT,
                         alignItems: "center",
                         justifyContent: "center",
-                        paddingHorizontal: s(5),
+                        paddingHorizontal: badgeWide ? s(6) : 0,
+                        overflow: "hidden",
                       }}
                     >
                       <Text
                         className="font-geom-semibold text-white"
-                        style={{ fontSize: s(11), lineHeight: s(13) }}
+                        style={{
+                          fontSize: s(11),
+                          lineHeight: s(12),
+                          includeFontPadding: false,
+                          textAlign: "center",
+                        }}
                       >
-                        {item.unread}
+                        {unreadLabel}
                       </Text>
                     </View>
                   ) : null}
                 </View>
               </Pressable>
-            ))}
+              );
+            })}
           </ScrollView>
         </WhitePanel>
       </View>

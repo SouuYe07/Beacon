@@ -1,12 +1,16 @@
 import { View, Text } from "react-native";
-import Penguin from "../../assets/Animals/Patient.svg";
+import FriendsSvg from "../../../assets/Animals/Friends.svg";
+import FamilySvg from "../../../assets/Animals/Family.svg";
+import ProfessionalSvg from "../../../assets/Animals/Professional.svg";
 
-export default function PatientListCard({
-  name = "User user",
-  phone = "(+1) 213 555-0123",
-  nextTalk = "August 11, 2026",
-  s = (n) => n,
-}) {
+const AVATARS = {
+  friend: FriendsSvg,
+  family: FamilySvg,
+  professional: ProfessionalSvg,
+};
+
+export default function GroupMemberCard({ name, phone, role, roleLabel, s }) {
+  const Avatar = AVATARS[role] ?? ProfessionalSvg;
   const avatarRing = s(88);
   const avatarInner = s(68);
   const cardW = s(320);
@@ -46,7 +50,7 @@ export default function PatientListCard({
             marginRight: s(12),
           }}
         >
-          <Penguin width={avatarInner} height={avatarInner} />
+          <Avatar width={avatarInner} height={avatarInner} />
         </View>
 
         <View style={{ flex: 1, paddingRight: s(4) }}>
@@ -79,7 +83,7 @@ export default function PatientListCard({
             }}
             numberOfLines={1}
           >
-            {`Next Talk: ${nextTalk}`}
+            {roleLabel}
           </Text>
         </View>
       </View>

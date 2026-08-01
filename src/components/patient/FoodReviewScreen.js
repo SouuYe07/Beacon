@@ -12,6 +12,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import Background from "../Background";
 import useFoodLayout from "../../hooks/useFoodLayout";
+import useChatsLayout from "../../hooks/useChatsLayout";
 
 const ACCENT = "#32759F";
 const CARD_W = 380;
@@ -38,12 +39,13 @@ function defaultMealLabel(date = new Date()) {
 export default function FoodReviewScreen() {
   const navigation = useNavigation();
   const route = useRoute();
-  const { s, sx, width, topPad, tabClearance } = useFoodLayout();
+  const { s, sx, width, tabClearance } = useFoodLayout();
+  const { insets, styles: L } = useChatsLayout();
   const placeholder = useMemo(() => defaultMealLabel(), []);
   const [description, setDescription] = useState(placeholder);
 
   const uri = route.params?.uri;
-  const titleSize = s(36);
+  const headerTop = insets.top + L.topPad;
   const descH = s(DESC_H);
   const btnH = s(BTN_H);
   const radius = s(RADIUS);
@@ -76,18 +78,17 @@ export default function FoodReviewScreen() {
         className="z-10 flex-1"
         behavior={Platform.OS === "ios" ? "padding" : undefined}
         style={{
-          paddingTop: topPad,
+          paddingTop: headerTop,
           paddingBottom: tabClearance,
-          paddingHorizontal: sx(25),
+          paddingHorizontal: L.sidePad,
         }}
       >
         <Text
-          className="font-geom-medium"
+          className="font-geom-bold text-[#262626]"
           style={{
-            fontSize: titleSize,
-            lineHeight: titleSize * 1.15,
-            color: "#262626",
-            marginBottom: s(20),
+            fontSize: L.titleSize,
+            lineHeight: L.titleSize * 1.15,
+            marginBottom: L.titleGap,
           }}
         >
           Post Food

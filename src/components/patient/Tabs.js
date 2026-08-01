@@ -59,12 +59,19 @@ function PatientTabBar({ state, descriptors, navigation }) {
   const current = state.routes[state.index];
   const nestedRoute =
     getFocusedRouteNameFromRoute(current) ??
-    (current.name === "Messages" ? "ChatsList" : "FoodPrompt");
+    (current.name === "Messages"
+      ? "ChatsList"
+      : current.name === "Group"
+        ? "GroupList"
+        : "FoodPrompt");
   if (current.name === "Messages" && nestedRoute === "ChatThread") {
     return null;
   }
   // Full-screen camera only — prompt + review keep the tab bar
   if (current.name === "Food" && nestedRoute === "FoodCamera") {
+    return null;
+  }
+  if (current.name === "Group" && nestedRoute === "GroupDetail") {
     return null;
   }
 
