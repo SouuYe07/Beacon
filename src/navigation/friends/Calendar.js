@@ -1,11 +1,13 @@
-import { View } from "react-native";
-import Background from "../../components/Background";
+import CalendarPage from "../CalendarPage.js";
+import { useFriendsRole } from "../../components/friends/FriendsRoleContext";
+import BunnySvg from "../../../assets/Navigation/Bunny.svg";
+import BearSvg from "../../../assets/Navigation/Bear.svg";
+import FriendsImage from "../../../assets/Animals/Friends.svg";
+import FamilyImage from "../../../assets/Animals/Family.svg";
 
 export default function Calendar() {
-  return (
-    <View className="flex-1 relative">
-      <Background />
-      <View className="flex-1 z-10" />
-    </View>
-  );
+  const role = useFriendsRole();
+  const Icon = role === "friend" ? BunnySvg : BearSvg;
+  const Image = role === "friend" ? FriendsImage : FamilyImage;
+  return <CalendarPage Icon={Icon} Image={Image} />;
 }

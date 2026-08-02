@@ -1,6 +1,7 @@
 import { View, Text } from "react-native";
 import ChevronDown from "../../../assets/Icons/chevron-down.svg";
 import Day from "./Day.js";
+import Search from "../../../assets/Icons/search.svg";
 
 export default function CalendarComponent({ Icon }) {
   return (
@@ -26,7 +27,7 @@ export default function CalendarComponent({ Icon }) {
 
             <View className="flex-row items-center px-1 justify-between h-8 w-32 border border-[#4D4D4D] rounded-lg">
               <View className="flex-row gap-x-2 items-center h-full">
-                {Icon}
+                <Search height={20} />
 
                 <Text className="font-geom-medium text-small text-[#0D5583]">
                   Session
@@ -39,18 +40,76 @@ export default function CalendarComponent({ Icon }) {
         </View>
 
         <View>
-          <View className="flex-row justify-between">
-            <Text className="font-geom-medium text-lg">Sun</Text>
-            <Text className="font-geom-medium text-lg">Mon</Text>
-            <Text className="font-geom-medium text-lg">Tue</Text>
-            <Text className="font-geom-medium text-lg">Wed</Text>
-            <Text className="font-geom-medium text-lg">Thu</Text>
-            <Text className="font-geom-medium text-lg">Fri</Text>
-            <Text className="font-geom-medium text-lg">Sat</Text>
+          <View className="flex-row">
+            <Text className="font-geom-medium text-lg text-center flex-1">Sun</Text>
+            <Text className="font-geom-medium text-lg text-center flex-1">Mon</Text>
+            <Text className="font-geom-medium text-lg text-center flex-1">Tue</Text>
+            <Text className="font-geom-medium text-lg text-center flex-1">Wed</Text>
+            <Text className="font-geom-medium text-lg text-center flex-1">Thu</Text>
+            <Text className="font-geom-medium text-lg text-center flex-1">Fri</Text>
+            <Text className="font-geom-medium text-lg text-center flex-1">Sat</Text>
+          </View>
+
+          <View className="flex-row justify-between mt-3">
+            <Day day={26} isSession={true} isThisMonth={false} />
+            <Day day={27} isSession={false} isThisMonth={false} />
+            <Day day={28} isSession={true} isThisMonth={false} />
+            <Day day={29} isSession={true} isThisMonth={false} />
+            <Day day={30} isSession={false} isThisMonth={false} />
+            <Day day={31} isSession={false} isThisMonth={false} />
+            <Day day={1} isSession={true} isThisMonth={true} />
+          </View>
+
+          <View className="flex-row justify-between mt-2">
+            <Day day={2} isSession={true} isThisMonth={true} />
+            <Day day={3} isSession={false} isThisMonth={true} />
+            <Day day={4} isSession={true} isThisMonth={true} />
+            <Day day={5} isSession={true} isThisMonth={true} />
+            <Day day={6} isSession={false} isThisMonth={true} />
+            <Day day={7} isSession={false} isThisMonth={true} />
+            <Day day={8} isSession={true} isThisMonth={true} />
+          </View>
+
+          <View className="flex-row justify-between mt-2">
+            <Day day={9} isSession={true} isThisMonth={true} />
+            <Day day={10} isSession={false} isThisMonth={true} />
+            <Day day={11} isSession={true} isThisMonth={true} />
+            <Day day={12} isSession={true} isThisMonth={true} />
+            <Day day={13} isSession={false} isThisMonth={true} />
+            <Day day={14} isSession={true} isThisMonth={true} />
+            <Day day={15} isSession={false} isThisMonth={true} />
+          </View>
+
+          <View className="flex-row justify-between mt-2">
+            <Day day={16} isSession={false} isThisMonth={true} />
+            <Day day={17} isSession={true} isThisMonth={true} />
+            <Day day={18} isSession={true} isThisMonth={true} />
+            <Day day={19} isSession={false} isThisMonth={true} />
+            <Day day={20} isSession={false} isThisMonth={true} />
+            <Day day={21} isSession={true} isThisMonth={true} />
+            <Day day={22} isSession={true} isThisMonth={true} />
+          </View>
+
+          <View className="flex-row justify-between mt-2">
+            <Day day={23} isSession={false} isThisMonth={true} />
+            <Day day={24} isSession={true} isThisMonth={true} />
+            <Day day={25} isSession={true} isThisMonth={true} />
+            <Day day={26} isSession={false} isThisMonth={true} />
+            <Day day={27} isSession={false} isThisMonth={true} />
+            <Day day={28} isSession={true} isThisMonth={true} />
+            <Day day={29} isSession={true} isThisMonth={true} />
+          </View>
+
+          <View className="flex-row justify-between mt-2">
+            <Day day={30} isSession={false} isThisMonth={true} />
+            <Day day={31} isSession={true} isThisMonth={true} />
+            <Day day={1} isSession={true} isThisMonth={false} />
+            <Day day={2} isSession={false} isThisMonth={false} />
+            <Day day={3} isSession={false} isThisMonth={false} />
+            <Day day={4} isSession={true} isThisMonth={false} />
+            <Day day={5} isSession={true} isThisMonth={false} />
           </View>
         </View>
-
-
       </View>
     </View>
   );

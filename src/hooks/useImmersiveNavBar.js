@@ -54,7 +54,7 @@ export default function useImmersiveNavBar() {
     return () => {
       clearTimeout(hideTimer.current);
       clearInterval(poll);
-      visibilitySub.remove();
+      try { visibilitySub.remove(); } catch {}
       appStateSub.remove();
     };
   }, []);

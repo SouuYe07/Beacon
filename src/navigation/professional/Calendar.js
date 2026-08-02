@@ -1,11 +1,7 @@
-import { View } from "react-native";
-import Background from "../../components/Background";
+import CalendarPage from "../CalendarPage.js";
+import OwlIcon from "../../../assets/Navigation/Owl.svg";
+import OwlImage from "../../../assets/Animals/Professional.svg";
 
 export default function Calendar() {
-  return (
-    <View className="flex-1 relative">
-      <Background />
-      <View className="flex-1 z-10" />
-    </View>
-  );
+  return (<CalendarPage Icon={OwlIcon} Image={OwlImage} />);
 }

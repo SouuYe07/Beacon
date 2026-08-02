@@ -1,11 +1,7 @@
-import { View } from "react-native";
-import Background from "../../components/Background";
+import CalendarPage from "../CalendarPage.js";
+import PenguinSvg from "../../../assets/Icons/tab-penguin.svg";
+import PatientImage from "../../../assets/Animals/Patient.svg";
 
 export default function Calendar() {
-  return (
-    <View className="flex-1 relative">
-      <Background />
-      <View className="flex-1 z-10" />
-    </View>
-  );
+  return <CalendarPage Icon={PenguinSvg} Image={PatientImage} />;
 }
