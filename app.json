@@ -19,7 +19,11 @@
       },
       "package": "com.souuye.Beacon",
       "softwareKeyboardLayoutMode": "pan",
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png",
@@ -43,6 +47,16 @@
           "style": "dark"
         }
       ]
-    ]
+    ],
+    "extra": {
+      "expo-navigation-bar": {
+        "enforceContrast": false,
+        "style": "dark",
+        "hidden": true
+      },
+      "eas": {
+        "projectId": "f1fbcd5e-f633-4d86-849b-372c963c6684"
+      }
+    }
   }
 }

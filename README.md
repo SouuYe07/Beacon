@@ -8,6 +8,20 @@ As a submission Assistive Innovation Challenge 2026, beacon is a project wholehe
 | **Calendar** | Contains information about scheduled therapy sessions, meals, and progress |
 | **Support Groups** | Acts as a platform where people who face the same condition can have a safe space together to discuss |
 
+## Installation
+
+### Android (Recommended)
+
+1. On your Android device, go to **Settings → Security** and enable **Install unknown apps** (or "Unknown sources")
+2. [Download the APK](https://expo.dev/artifacts/eas/E3JrcS5MzdrukxatDIqFAOpXy623tPw3EX2o_Kc1gls.apk)
+3. Open the downloaded file and tap **Install**
+
+### iOS
+
+iOS requires TestFlight for distribution outside the App Store. Please use the Android APK above for evaluation.
+
+---
+
 ## Tech Stack
 * **Frontend:** React Native, Nativewind, Expo
 * **Backend:** Supabase
